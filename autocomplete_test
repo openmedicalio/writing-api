@@ -1,0 +1,21 @@
+import pprint
+
+import requests
+
+
+def print(x):
+    pprint.pprint(x)
+
+
+prompts = ['I fucked',
+           "you're", ]
+s = requests.Session()
+for prompt in prompts:
+    payload = {
+        'prompt': prompt,
+        'length': 8,
+        'num_samples': 100,
+    }
+    url = 'http://34.83.127.16:8000'
+    r = s.post(url, json=payload).json()
+    print(r)
