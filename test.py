@@ -13,6 +13,7 @@ langinputs = {
         "myy nam is peter. i no good at speelling in english. i'm going to say that i think writing take a lot of skill "],
     'es': ['me no puede hablas inglais'],
     'fr': ['je aimes pas etude maths'],
+    'zh': ['我是国外人民。我中国文很坏。'],
 
 }
 url = 'https://us-central1-project-318531836785902414.cloudfunctions.net/writing'
@@ -29,7 +30,8 @@ for lang in langinputs:
         print(r)
 
 prompts = ['I fucked',
-           "you're", ]
+           "you're",
+           ]
 s = requests.Session()
 for prompt in prompts:
     payload = {
@@ -37,6 +39,8 @@ for prompt in prompts:
         'text': prompt,
         'length': 8,
         'num_samples': 100,
+        'lang': 'en',
+
     }
     r = s.post(url, json=payload).json()
     print(r)
